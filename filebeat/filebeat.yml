@@ -1,0 +1,22 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /usr/share/filebeat/python_log/*
+
+output.elasticsearch:
+  hosts: '${ELASTIC_IP}:9200'
+  username: "admin"
+  password: "admin"
+
+output.elasticsearch.allow_older_versions: true
+  
+setup.kibana:
+  host: '${ELASTIC_IP}:5601'
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
