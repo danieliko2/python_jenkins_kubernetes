@@ -1,12 +1,11 @@
 # Python Jenkins Kubernetes - Daniel Kohav
 
 # ABOUT
-This is a project that has 3 major technologies implemented in it:
+This is a project that has 4 major technologies implemented in it:
 
 -- Python --
 
 A simple python shop app with MongoDB as a Database
-
 
 -- Jenkins --
 
@@ -15,6 +14,10 @@ A pipeline that builds, tests, deploys and updates the kubernetes image.
 -- kubernetes --
 
 The application is deployed to an EKS cluster
+
+-- ELK Stack --
+
+The application logs are sent to an ELK stack using Filebeat
 
 # USAGE  
 -- Requirements --
