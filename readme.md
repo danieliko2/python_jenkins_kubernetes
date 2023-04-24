@@ -23,9 +23,9 @@ The application logs are sent to an ELK stack using Filebeat
 -- Requirements --
 
 MongoDB password:
+Create a mongodb password secret:
 kubectl create secret generic mysecret --from-literal=MY_ENV_MONGO=<my mongo password>
 
 ELK Stack Public IP:
+Create a configmap for ElasticSearch server IP
 kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my ELK ip>
-
-Change the cluster name in Jenkinsfile for your cluster name
