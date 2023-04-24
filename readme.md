@@ -5,7 +5,7 @@ This is a project that has 3 major technologies implemented in it:
 
 -- Python --
 
-A simple python app 
+A simple python shop app with MongoDB as a Database
 
 
 -- Jenkins --
