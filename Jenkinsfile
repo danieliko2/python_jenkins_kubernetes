@@ -13,19 +13,20 @@ pipeline {
                 steps {
                     sh 'echo Installing requirements'
                     sh 'pip3 install -r newshopapp/requirements.txt'
+                    sh 'export $(cat .env | xargs)'
                 }
             }
             stage('Build') {
                 steps {
                     sh 'echo Building App..'
-                    sh 'docker build -t myapp .'
+                    sh "docker build -t ${env.PYTHON_DOCKER_IMAGE} ."
                 }
             }
             stage('Test') {
                 steps {
-                    withCredentials([string(credentialsId: 'MONGODB_PASS', variable: 'mongo_sec')]) {
+                    withCredentials([string(credentialsId: 'MONGODB_CONNECTION', variable: 'mongo_con')]) {
                         sh 'echo Running app'
-                        sh "docker run -p 8000:8000 -e MONGO_PASS='${mongo_sec}' -d myapp"
+                        sh "docker run -p 8000:8000 -e MONGO_CON='${mongo_sec}' -d myapp"
                     }
                     sh 'echo Testing..'
                     sh 'cd newshopapp'
@@ -34,25 +35,18 @@ pipeline {
                     sh 'cd ..'
                 }
             }
-            stage('Tag') {
-                steps {
-                    echo 'Tagging..'
-                    sh 'docker tag myapp danieliko/kafka_python'
-
-                }
-            }
             stage('Publish') {
                 steps {
                     echo 'Publishing to Dockerhub'
-                    sh 'docker push danieliko/kafka_python'
+                    sh "docker push ${env.PYTHON_DOCKER_IMAGE}"
 
                 }
             }
             stage('Deploy') {
                 steps {
                     echo 'Deploying app to EKS'
-                    sh 'aws eks update-kubeconfig --name education-eks-I3NsDpN6'
-                    sh 'kubectl rollout restart deployment/scalable-nginx-example'
+                    sh "aws eks update-kubeconfig --name ${env.EKS_CONTEXT}"
+                    sh 'kubectl rollout restart deployment/python-app'
                 }
             }
             stage('Post Clean') {

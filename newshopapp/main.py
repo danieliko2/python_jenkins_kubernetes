@@ -7,9 +7,8 @@ from fastapi.logger import logger as fastapi_logger
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
 from os import environ
-from pymongo import MongoClient, InsertOne
+from pymongo import MongoClient
 
 # Initialize FastAPI
 app = FastAPI()
@@ -30,8 +29,7 @@ fastapi_logger.info("starting")
 
 
 # MongoDB connection
-mongo_pass = environ.get('MONGO_PASS')
-CONNECTION_STRING = f'mongodb+srv://admin:{mongo_pass}@cluster0.ds6gvkt.mongodb.net/?retryWrites=true&w=majority'
+CONNECTION_STRING = environ.get('MONGO_CON')
 client = MongoClient(CONNECTION_STRING)
 db=client['purchases_db']
 col = db['purchases']
