@@ -17,7 +17,7 @@ The application logs are sent to an ELK stack using Filebeat.
 A custom filebeat docker image is used for aggeregating the application's logs.  
   
 
-![alt text](hhttps://lh3.googleusercontent.com/drive-viewer/AFGJ81r7doKS83YhthQjf8BwfDJgZbwwoHzwTH2FuUk5KHASgvxtQCWMA7fpnZCsjBo_AfNPDh8cwAhLTqNFWxlsn70RfuOkTg=s1600)
+![alt text](https://lh3.googleusercontent.com/drive-viewer/AFGJ81r7doKS83YhthQjf8BwfDJgZbwwoHzwTH2FuUk5KHASgvxtQCWMA7fpnZCsjBo_AfNPDh8cwAhLTqNFWxlsn70RfuOkTg=s1600)
   
 
 # USAGE  
