@@ -44,8 +44,15 @@ A configured ELK server is required.
 docker-compose ELK example can be found in '/ELK/' directive.
 ```
 docker-compose up
+```  
+  
+-- Jenknins Prequisites --  
+AWS CLI installed and configured on Jenkins host
 ```
-
+aws configure
+```
+Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
+Connection to project SCM (github, gitlab, etc)
 -- Provisioning EKS --  
 Provising an EKS cluster, an example can be found in '/terraform/provision-eks' directive.  
 A readme file is available in '/terraform' directive.
@@ -75,11 +82,3 @@ kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my_E
 ```
 -- Deploy cluster --  
 An example deployment of the cluster can be found at /terraform/deploy-cluster directive.  
-
--- Jenknins Prequisites --  
-AWS CLI installed and configured on Jenkins host
-```
-aws configure
-```
-Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
-Connection to project SCM (github, gitlab, etc)
