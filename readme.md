@@ -57,8 +57,8 @@ and will be the entrypoint to the cluster.
    
 -- .env --  
 After provisioning the EKS cluster, edit the .env file with the following:  
-name of the Dockerhub registries.  
-the name of the EKS cluster for the cluster context.  
+Names of the Dockerhub registries (Python app and Custom Filebeat).  
+The name of the EKS cluster for the cluster context.  
 
 -- Kubernetes Cluster Prequisites --  
 MongoDB connection string:
@@ -77,6 +77,9 @@ kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my_E
 An example deployment of the cluster can be found at /terraform/deploy-cluster directive.  
 
 -- Jenknins Prequisites --  
-AWS CLI installed on Jenkins host
-Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string.
+AWS CLI installed and configured on Jenkins host
+```
+aws configure
+```
+Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
 Connection to project SCM (github, gitlab, etc)
