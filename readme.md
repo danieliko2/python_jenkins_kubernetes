@@ -1,7 +1,7 @@
 # Python Jenkins Kubernetes - Daniel Kohav
 
 # ABOUT
-This project's main focus is a CI-CD pipeline for a database-based python application with logging feature.
+This setup consists of a Python shop app utilizing a MongoDB database. The application's lifecycle is managed through a Jenkins pipeline, which handles building, testing, publishing, and deploying updates to a Kubernetes cluster. The application is deployed specifically to an EKS cluster. To facilitate log management, the application's logs are sent to an ELK (Elasticsearch, Logstash, and Kibana) stack using Filebeat. A customized Filebeat Docker image is employed to aggregate the application's logs    .
 
 -- Python app --  
 A sample shop app with MongoDB database.
@@ -14,8 +14,8 @@ The application is deployed to an EKS cluster.
 
 -- ELK Stack --  
 The application logs are sent to an ELK stack using Filebeat.
-A custom filebeat docker image is used for aggeregating the application's logs.
-
+A custom filebeat docker image is used for aggeregating the application's logs.  
+![alt text](https://lh3.googleusercontent.com/drive-viewer/AFGJ81r9E2vhrXBTUo3SWP4ybLOdhBCEBjrFN0sSguxScuO111dcb2Kybd7UyK0dSdmw2JoSxn-FzvaKQvWjrpdzP7dsVHcOwA=s1600)
 # USAGE  
 -- Prerequisites --  
 A Jenkins server connected to SCM
