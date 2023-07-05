@@ -41,7 +41,7 @@ The names of the registries will be later added to the '.env' file.
 
 -- Deploy ELK server --  
 A configured ELK server is required.
-docker-compose ELK example can be found in '/ELK/ directive.
+docker-compose ELK example can be found in '/ELK/' directive.
 ```
 docker-compose up
 ```
