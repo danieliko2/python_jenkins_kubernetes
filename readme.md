@@ -17,9 +17,9 @@ The application logs are sent to an ELK stack using Filebeat.
 A custom filebeat docker image is used for aggeregating the application's logs.  
   
 
-![alt text](https://lh3.googleusercontent.com/drive-viewer/AFGJ81r9E2vhrXBTUo3SWP4ybLOdhBCEBjrFN0sSguxScuO111dcb2Kybd7UyK0dSdmw2JoSxn-FzvaKQvWjrpdzP7dsVHcOwA=s1600)
+![alt text](hhttps://lh3.googleusercontent.com/drive-viewer/AFGJ81r7doKS83YhthQjf8BwfDJgZbwwoHzwTH2FuUk5KHASgvxtQCWMA7fpnZCsjBo_AfNPDh8cwAhLTqNFWxlsn70RfuOkTg=s1600)
   
-  
+
 # USAGE  
 -- Prerequisites --  
 A Jenkins server connected to SCM
