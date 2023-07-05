@@ -52,7 +52,8 @@ AWS CLI installed and configured on Jenkins host
 aws configure
 ```
 Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
-Connection to project SCM (github, gitlab, etc)
+Connection to project SCM (github, gitlab, etc)  
+  
 -- Provisioning EKS --  
 Provising an EKS cluster, an example can be found in '/terraform/provision-eks' directive.  
 A readme file is available in '/terraform' directive.
