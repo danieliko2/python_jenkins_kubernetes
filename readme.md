@@ -8,7 +8,7 @@ A sample shop app with MongoDB database.
 
 -- Jenkins --
 A pipeline that builds, tests, publishes and deploys the udpates to kubernetes cluster.
-        
+
 -- kubernetes --
 The application is deployed to an EKS cluster.
 
@@ -24,10 +24,13 @@ EKS Cluster (Terraform configuration files for EKS cluster can be found in terra
 
 -- Deploy ELK server --
 docker-compose ELK example can be found in ELK directive
+
 -- Provisioning EKS --
 Provising an EKS cluster, an example can be found in terraform/provision-eks directive.
+עצשןך
 -- .env --
 After provisioning the EKS cluster, edit the .env with the name of the docker images of your choice, and the name of the EKS cluster for the cluster context.
+
 -- Kubernetes Cluster Prequisites --
 MongoDB connection string:
 Set a kubernetes secret for the MongoDB connection string:
