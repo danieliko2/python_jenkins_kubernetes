@@ -20,16 +20,16 @@ A custom filebeat docker image is used for aggeregating the application's logs.
 -- Prerequisites --
 A Jenkins server connected to SCM
 AWS CLI installed on Jenkins host
-EKS Cluster (Terraform configuration files for EKS cluster can be found in terraform directive)
+EKS Cluster (Terraform configuration files for EKS cluster can be found in terraform directive)  
 
 -- Deploy ELK server --
-docker-compose ELK example can be found in ELK directive
+docker-compose ELK example can be found in ELK directive  
 
 -- Provisioning EKS --
-Provising an EKS cluster, an example can be found in terraform/provision-eks directive.
-עצשןך
+Provising an EKS cluster, an example can be found in terraform/provision-eks directive.  
+
 -- .env --
-After provisioning the EKS cluster, edit the .env with the name of the docker images of your choice, and the name of the EKS cluster for the cluster context.
+After provisioning the EKS cluster, edit the .env with the name of the docker images of your choice, and the name of the EKS cluster for the cluster context.  
 
 -- Kubernetes Cluster Prequisites --
 MongoDB connection string:
@@ -43,7 +43,7 @@ Set a configmap for ELK server public ip
 kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my_ELK_ip>
 ```
 -- Deploy cluster --
-An example deployment of the cluster can be found at /terraform/deploy-cluster directive.
+An example deployment of the cluster can be found at /terraform/deploy-cluster directive.  
 
 -- Jenknins Prequisites --
 AWS CLI installed on Jenkins host
