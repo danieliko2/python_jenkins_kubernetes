@@ -33,7 +33,7 @@ The kubernetes cluster needs 2 Docker images:
 The Dockerfile in this repository will build a docker image of the shopapp.
 Build the image and push it to a public Dockerhub registry.
 ```
-docker build -t 'my-shopapp' .
+docker build -t 'python_app' .
 ```  
 
 2: Filebeat image
