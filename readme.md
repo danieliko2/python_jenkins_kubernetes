@@ -45,11 +45,7 @@ Setting the project is made of 2 steps - privisioning the infrastructure, and co
 Configure a Jenkins Server and a Jenkins agent.  
 Jenkins configuration guide: https://octopus.com/blog/jenkins-docker-install-guide  
 Jenkins agent configuration guide: https://www.pluralsight.com/resources/blog/cloud/adding-a-jenkins-agent-node  
-kubectl installed on Jenkins agent node, configure the kubectl context to the EKS cluster after it's done provisioning:
-```
-aws eks --region $(terraform output -raw region) update-kubeconfig \
-    --name $(terraform output -raw cluster_name)
-```
+
 
 ###### SCM:  
 Configure a github/gitlab repository.  
@@ -124,7 +120,12 @@ Install and configure AWS CLI on the Agent Node: https://docs.aws.amazon.com/cli
 ```
 aws configure
 ```
-Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.  
+Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI. 
+kubectl installed on Jenkins agent node, configure the kubectl context to the EKS cluster after it's done provisioning:
+```
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+``` 
 
 ###### SCM:
 Create a repository for the project (cloning/forking the repository is the simplest way to do it).  
