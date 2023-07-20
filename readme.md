@@ -33,7 +33,7 @@ The kubernetes cluster needs 2 Docker images:
 The Dockerfile in this repository will build a docker image of the shopapp.
 Build the image and push it to a public Dockerhub registry.
 ```
-docker build -t 'python_app' .
+docker build -t 'my_repo_name/python_app' .
 ```  
 
 2: Filebeat image
@@ -41,6 +41,9 @@ A custom filebeat image is used to aggregate logs.
 A dockerfile can be found in '/ELK/filebeat' directive, build an image and push it to a Dockerhub registry.
 
 The names of the registries will be later added to the '.env' file.
+Change the variables in the .env file to the docker images we created:
+FILEBEAT_DOCKER_IMAGE=my_repo_name/filebeat
+PYTHON_DOCKER_IMAGE=my_repo_name/python_app
 
 -- Deploy ELK server --  
 A configured ELK server is required.
