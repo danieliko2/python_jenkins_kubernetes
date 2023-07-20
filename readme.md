@@ -70,6 +70,7 @@ Configured connection/webhook to project SCM (github, gitlab, etc).
 Provising an EKS cluster, an example can be found in '/terraform/provision-eks' directive.  
 A readme file is available in '/terraform' directive.
 ```
+terraform init
 terraform apply
 ```
 A loadbalancer IP (as an output parameter) will be displayed in the CLI, after the provisioning is complete,  
