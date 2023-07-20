@@ -24,30 +24,30 @@ A custom filebeat docker image is used for aggeregating the application's logs.
 
 ###### Requirements:
 
-Infrastructure:
-Jenkins + Agent Node
+Infrastructure:  
+Jenkins + Agent Node  
 SCM (Github/Gitlab)  
 EKS Cluster  
 ELK Server  
 Dockerhub Registries  
 
-Docker Images:
-python app
-filebeat
-ELK docker-compose
+Docker Images:  
+python app  
+filebeat  
+ELK docker-compose  
 
-Setting the project is made of 2 steps - Privisioning the infrastructure, configuring the infrastructure.
+Setting the project is made of 2 steps - Privisioning the infrastructure, configuring the infrastructure.  
 
 
 #### Provisioing the infrastructure
 
 ###### Jenkins+Agent Node:
-Configure a Jenkins Server and a Jenkins agent.
-Jenkins configuration guide: https://octopus.com/blog/jenkins-docker-install-guide
-Jenkins agent configuration guide: https://www.pluralsight.com/resources/blog/cloud/adding-a-jenkins-agent-node
+Configure a Jenkins Server and a Jenkins agent.  
+Jenkins configuration guide: https://octopus.com/blog/jenkins-docker-install-guide  
+Jenkins agent configuration guide: https://www.pluralsight.com/resources/blog/cloud/adding-a-jenkins-agent-node  
 
 ###### SCM:  
-Configure a github/gitlab repository    .  
+Configure a github/gitlab repository.  
 Simple- Github  
 Advance-  Gitlab  (This readme is mostly focusted on Gitlab)  
 Gitlab provisioining guide: https://thenewstack.io/how-to-deploy-gitlab-server-using-docker-and-ubuntu-server-22-04/  
@@ -55,7 +55,7 @@ Gitlab provisioining guide: https://thenewstack.io/how-to-deploy-gitlab-server-u
 
 
 ###### EKS Cluster:  
-An EKS cluster is required.
+An EKS cluster is required.  
 Terraform files for provisioning the cluster can be found in '/terraform/privision-eks' directive, and a readme file can be found in the '/terraform' directive.
 ```
 terraform init
@@ -65,28 +65,28 @@ A loadbalancer IP (as an output parameter) will be displayed in the CLI, after t
 and will be the entrypoint to the cluster.  
 
 ###### ELK Server:
-An ELK server is required.
-A docker-compose example can be found in the ELK directive.
-ELK configuration guide: https://logz.io/blog/elk-stack-on-docker/
+An ELK server is required.  
+A docker-compose example can be found in the ELK directive.  
+ELK configuration guide: https://logz.io/blog/elk-stack-on-docker/  
 
 ###### Dockerhub registries:
-Two public dockerhub regiesties are required:
-One for the application and the second for a custom filebeat image.
+Two public dockerhub regiesties are required:  
+One for the application and the second for a custom filebeat image.  
 
 
 ##### Docker images
-The kubernetes cluster needs 2 Docker images:
-1: Python app
-The Dockerfile in this repository will build a docker image of the shopapp.
-Build the image and push it to a public Dockerhub registry.
+The kubernetes cluster needs 2 Docker images:  
+1: Python app  
+The Dockerfile in this repository will build a docker image of the shopapp.  
+Build the image and push it to a public Dockerhub registry.  
 ```
 docker build -t 'my_repo_name/python_app' .
 docker push my_repo_name/python_app
 ```  
 
-2: Filebeat image
-A custom filebeat image is used to aggregate logs.
-A dockerfile can be found in '/ELK/filebeat' directive, build an image and push it to a Dockerhub registry.
+2: Filebeat image  
+A custom filebeat image is used to aggregate logs.  
+A dockerfile can be found in '/ELK/filebeat' directive, build an image and push it to a Dockerhub registry.  
 ```
 cd ELK/filebeat
 docker build -t 'my_repo_name/filebeat' .
@@ -104,14 +104,14 @@ export $(cat .env | xargs) && rails c
 
 #### Configuring the Infrastructure:
 ###### Jenkins+Agent Node:
-Connect Jenkins to the SCM
+Connect Jenkins to the SCM  
 Jenkins+Gitlab tutorial: https://medium.com/@meanuraj.sl/how-to-integrate-jenkins-and-gitlab-3e8b11cf29cc  
 Install and configure AWS CLI on the Agent Node: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html  
 
 ```
 aws configure
 ```
-Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
+Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.  
 
 ###### SCM:
 Create a repository for the project (cloning/forking the repository is the simplest way to do it).  
@@ -119,15 +119,15 @@ Create a integration/webhook from SCM to Jenkins:  https://hevodata.com/learn/gi
 
 ###### EKS Cluster:
 -- Kubernetes Cluster Prequisites --  
-MongoDB connection string:
-The python application needs a valid MongoDB connection string.
-Set a kubernetes secret for the MongoDB connection string:
+MongoDB connection string:  
+The python application needs a valid MongoDB connection string.  
+Set a kubernetes secret for the MongoDB connection string:  
 ```
 kubectl create secret generic mysecret --from-literal=MY_ENV_MONGO=<MongoDB_connection_string>
 ```
-ELK Server IP:
-Filebeat needs the public ip of the ELK server to send logs.
-Set a configmap for the ELK server's public ip:
+ELK Server IP:  
+Filebeat needs the public ip of the ELK server to send logs.  
+Set a configmap for the ELK server's public ip:  
 ```
 kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my_ELK_public_ip>
 ```
