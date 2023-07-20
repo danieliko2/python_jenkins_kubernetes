@@ -36,7 +36,7 @@ python app
 filebeat  
 ELK docker-compose  
 
-Setting the project is made of 2 steps - Privisioning the infrastructure, configuring the infrastructure.  
+Setting the project is made of 2 steps - privisioning the infrastructure, and configuring the infrastructure.  
 
 
 #### Provisioing the infrastructure
