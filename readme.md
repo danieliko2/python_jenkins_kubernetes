@@ -30,8 +30,8 @@ EKS Cluster (Terraform configuration files for EKS cluster can be found in terra
 -- Docker images --
 The kubernetes cluster needs 2 Docker images:
 1: Python app
-A Dockerfile exists in the '/shopapp' directive.
-Build a docker image and push it to a Dockerhub registry.
+The Dockerfile in this repo will build an image of the shopapp.
+Build the docker image and push it to a public Dockerhub registry.
 
 2: Filebeat image
 A custom filebeat image is used to aggregate logs.
