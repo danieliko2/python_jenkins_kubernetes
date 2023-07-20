@@ -60,7 +60,7 @@ A readme file is available in '/terraform' directive.
 ```
 terraform apply
 ```
-A loadbalancer IP (as an output parameter) will be show in the CLI after the provisioning is complete,  
+A loadbalancer IP (as an output parameter) will be displayed in the CLI, after the provisioning is complete,  
 and will be the entrypoint to the cluster.  
    
 -- .env --  
