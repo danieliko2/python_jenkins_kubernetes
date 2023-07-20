@@ -45,6 +45,11 @@ Setting the project is made of 2 steps - privisioning the infrastructure, and co
 Configure a Jenkins Server and a Jenkins agent.  
 Jenkins configuration guide: https://octopus.com/blog/jenkins-docker-install-guide  
 Jenkins agent configuration guide: https://www.pluralsight.com/resources/blog/cloud/adding-a-jenkins-agent-node  
+kubectl installed on Jenkins agent node, configure the kubectl context to the EKS cluster after it's done provisioning:
+```
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+```
 
 ###### SCM:  
 Configure a github/gitlab repository.  
@@ -63,7 +68,11 @@ terraform apply
 ```
 A loadbalancer IP (as an output parameter) will be displayed in the CLI, after the provisioning is complete,  
 and will be the entrypoint to the cluster.  
-
+After provisioning the cluster, configure the cluster context:
+```
+aws eks --region $(terraform output -raw region) update-kubeconfig \
+    --name $(terraform output -raw cluster_name)
+```
 ###### ELK Server:
 An ELK server is required.  
 A docker-compose example can be found in the ELK directive.  

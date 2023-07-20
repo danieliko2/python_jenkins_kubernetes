@@ -21,13 +21,13 @@ variable "PYTHON_DOCKER_IMAGE" {
   type = string
 }
 
-data "kubernetes_con  fig_map" "my_configmap" {
+data "kubernetes_config_map" "my-configmap" {
   metadata {
     name = "elastic-ip-configmap"
   }
 }
 
-data "kubernetes_secret" "my_secret" {
+data "kubernetes_secret" "my-secret" {
   metadata {
     name = "mysecret"
   }
@@ -97,7 +97,7 @@ resource "kubernetes_deployment" "python-app" {
 
         container {
           image             = "${var.PYTHON_DOCKER_IMAGE}"
-          name              = "my-filebeat"
+          name              = "my-python-app"
           image_pull_policy = "Always"
 
           volume_mount {
@@ -143,7 +143,7 @@ resource "kubernetes_deployment" "python-app" {
 
           env {
             name = "ELASTIC_IP"
-            value = data.kubernetes_config_map.my_configmap.data["my_elastic_ip"]
+            value = data.kubernetes_config_map.my-configmap.data["my_elastic_ip"]
           }
 
           resources {
