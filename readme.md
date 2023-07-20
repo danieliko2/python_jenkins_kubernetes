@@ -34,11 +34,17 @@ The Dockerfile in this repository will build a docker image of the shopapp.
 Build the image and push it to a public Dockerhub registry.
 ```
 docker build -t 'my_repo_name/python_app' .
+docker push my_repo_name/python_app
 ```  
 
 2: Filebeat image
 A custom filebeat image is used to aggregate logs.
 A dockerfile can be found in '/ELK/filebeat' directive, build an image and push it to a Dockerhub registry.
+```
+cd ELK/filebeat
+docker build -t 'my_repo_name/filebeat' .
+docker push my_repo_name/filebeat
+``` 
 
 The names of the registries will be later added to the '.env' file.
 Change the variables in the .env file to the docker images we created:  
@@ -58,7 +64,7 @@ AWS CLI installed and configured on Jenkins host
 aws configure
 ```
 Jenkins Credentials 'MONGODB_CONNECTION' for the MongoDB connection string configured in Jenkins GUI.
-Set connection/webhook to project SCM (github, gitlab, etc).
+Configured connection/webhook to project SCM (github, gitlab, etc).
   
 -- Provisioning EKS --  
 Provising an EKS cluster, an example can be found in '/terraform/provision-eks' directive.  
@@ -71,8 +77,11 @@ and will be the entrypoint to the cluster.
    
 -- .env --  
 After provisioning the EKS cluster, edit the .env file with the following:  
-Names of the Dockerhub registries (Python app and Custom Filebeat).  
-The name of the EKS cluster for the cluster context.  
+Names of the Dockerhub registries (Python app and Custom Filebeat, already done in previous 'Docker images' step).  
+The name of the EKS cluster for the cluster context.
+```
+export $(cat .env | xargs) && rails c
+```
 
 -- Kubernetes Cluster Prequisites --  
 MongoDB connection string:
