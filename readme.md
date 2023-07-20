@@ -137,3 +137,6 @@ kubectl create configmap elastic-ip-configmap --from-literal=my_elastic_ip=<my_E
 ```
 -- Deploy cluster --  
 An example deployment of the cluster can be found at /terraform/deploy-cluster directive.  
+```
+terraform apply -var FILEBEAT_IMAGE=$FILEBEAT_IMAGE -var PYTHON_DOCKER_IMAGE=$PYTHON_DOCKER_IMAGE
+```

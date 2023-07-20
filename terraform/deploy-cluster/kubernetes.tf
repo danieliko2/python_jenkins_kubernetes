@@ -13,7 +13,15 @@ terraform {
   }
 }
 
-data "kubernetes_config_map" "my_configmap" {
+variable "FILEBEAT_IMAGE" {
+  type = string
+}
+
+variable "PYTHON_DOCKER_IMAGE" {
+  type = string
+}
+
+data "kubernetes_con  fig_map" "my_configmap" {
   metadata {
     name = "elastic-ip-configmap"
   }
@@ -88,7 +96,7 @@ resource "kubernetes_deployment" "python-app" {
         }
 
         container {
-          image             = "${env.PYTHON_DOCKER_IMAGE}"
+          image             = "${var.PYTHON_DOCKER_IMAGE}"
           name              = "my-filebeat"
           image_pull_policy = "Always"
 
@@ -124,7 +132,7 @@ resource "kubernetes_deployment" "python-app" {
         }
 
         container {
-          image             = "${env.FILEBEAT_IMAGE}"
+          image             = "${var.FILEBEAT_IMAGE}"
           name              = "my-filebeat"
           image_pull_policy = "Always"
 
@@ -175,4 +183,3 @@ resource "kubernetes_service" "python-app" {
 output "lb_ip" {
   value = kubernetes_service.python-app.status.0.load_balancer.0.ingress.0.hostname
 }
-
