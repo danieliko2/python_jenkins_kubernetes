@@ -94,10 +94,14 @@ docker push my_repo_name/filebeat
 ``` 
 The names of the registries will be later added to the '.env' file.  
 Change the variables in the .env file to the docker images we created:  
+```
 FILEBEAT_DOCKER_IMAGE=my_repo_name/filebeat  
 PYTHON_DOCKER_IMAGE=my_repo_name/python_app  
+```
 Also, edit the name of the EKS cluster to the EKS cluster we provisioned:  
+```
 EKS_CONTEXT=my-eks-context  
+```
 ```
 export $(cat .env | xargs) && rails c
 ```
