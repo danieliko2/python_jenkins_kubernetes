@@ -41,7 +41,7 @@ A custom filebeat image is used to aggregate logs.
 A dockerfile can be found in '/ELK/filebeat' directive, build an image and push it to a Dockerhub registry.
 
 The names of the registries will be later added to the '.env' file.
-Change the variables in the .env file to the docker images we created:
+Change the variables in the .env file to the docker images we created:  
 FILEBEAT_DOCKER_IMAGE=my_repo_name/filebeat
 PYTHON_DOCKER_IMAGE=my_repo_name/python_app
 
